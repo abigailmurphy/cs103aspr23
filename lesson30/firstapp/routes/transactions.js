@@ -24,7 +24,7 @@ router.get('/transactions/',
   isLoggedIn,
   async (req, res, next) => {
     let items=[]
-    items = TransactionItem.find({userId:req.user._id})
+    items = await TransactionItem.find({userId:req.user._id})
    
      res.render('transactionList',{items})
 });
