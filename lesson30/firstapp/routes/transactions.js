@@ -32,7 +32,7 @@ router.get('/transactions/',
 router.post('/transactions',
   isLoggedIn,
   async (req, res, next) => {
-      const todo = new TransactionItem(
+      const transaction = new TransactionItem(
         {description: req.body.description,
          amount: parseFloat(req.body.amount),
          category: req.body.category,
@@ -40,7 +40,7 @@ router.post('/transactions',
          createdAt: new Date(),
          userId: req.user._id
         })
-      await transactions.save();
+      await transaction.save();
       res.redirect('/transactions')
 });
 
