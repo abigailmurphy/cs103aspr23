@@ -26,8 +26,9 @@ router.get('/transactions/',
   async (req, res, next) => {
       const show = req.query.show
       let items=[]
-      await ToDoItem.find({userId:req.user._id, completed})
-                        .sort({completed:1,priority:1,createdAt:1})
+      items = 
+        await ToDoItem.find({userId:req.user._id})
+                     
   
             res.render('transactionList',{items,show,completed});
 });
