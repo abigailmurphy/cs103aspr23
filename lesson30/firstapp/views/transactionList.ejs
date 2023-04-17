@@ -1,18 +1,17 @@
 <h1> Transactions for <%= user.username %> </h1>
 
   <div class="row">
-    <div class="col">
-      <p> Here is your list of things to do! </p>
-      <p class="m-2">
-      
-        <% if (show=='completed'){%>
-          <a class="btn btn-lg btn-primary"
-              href="?show=todo">(Show tasks to do)</a>
-        <% }else {%>
-          <a class="btn btn-lg btn-primary"
-              href="?show=completed">(Show completed tasks)</a>
-        <%}%>
-      </p>
+    <div class = "col-sm">
+      description
+    </div>
+    <div class = "col-sm">
+      amount
+    </div>
+      category
+    </div>
+      date
+    </div>
+  </div>
    
       <ul class="list-group">
         <% items.forEach(item => { %>
