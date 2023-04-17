@@ -43,10 +43,11 @@ router.post('/transactions',
         {description: req.body.description,
          amount: parseFloat(req.body.amount),
          category: req.body.category,
+         date: req.body.date,
          createdAt: new Date(),
          userId: req.user._id
         })
-      await todo.save();
+      await transactions.save();
       res.redirect('/transactions')
 });
 
