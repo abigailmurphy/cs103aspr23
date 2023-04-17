@@ -6,7 +6,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var toDoItemSchema = Schema( {
   description: String,
-  amount: Double,
+  amount: Number,
   createdAt: Date,
   category: String,
   userId: {type:ObjectId, ref:'user' }
