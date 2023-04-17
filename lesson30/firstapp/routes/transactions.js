@@ -24,19 +24,19 @@ router.get('/todo/',
   isLoggedIn,
   async (req, res, next) => {
       const show = req.query.show
-      const completed = show=='completed'
+      const completed = show
       let items=[]
       if (show) { // show is completed or todo, so just show some items
         items = 
-          await ToDoItem.find({userId:req.user._id, completed})
-                        .sort({completed:1,priority:1,createdAt:1})
+          await TransactionItem.find({userId:req.user._id})
+                        .sort({createdAt:1})
       }else {  // show is null, so show all of the items
         items = 
-          await ToDoItem.find({userId:req.user._id})
-                        .sort({completed:1,priority:1,createdAt:1})
+          await TransactionItem.find({userId:req.user._id})
+                        .sort(createdAt:1})
 
       }
-            res.render('toDoList',{items,show,completed});
+            res.render('transactionList',{items,show});
 });
 
 
