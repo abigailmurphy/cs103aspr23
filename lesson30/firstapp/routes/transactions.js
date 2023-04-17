@@ -37,7 +37,7 @@ router.get('/transactions/',
                         .sort({completed:1,priority:1,createdAt:1})
 
       }
-            res.render('toDoList',{items,show,completed});
+            res.render('transactionList',{items,show,completed});
 });
 
 
