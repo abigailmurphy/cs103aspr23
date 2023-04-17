@@ -5,9 +5,13 @@
       <p> Here is your list of things to do! </p>
     
       <p class="m-2">
-       <a class="btn btn-lg btn-primary"
-              href="?show=transactions">(Show tasks to do)</a>
-       
+        <% if (show=='completed'){%>
+          <a class="btn btn-lg btn-primary"
+              href="?show=todo">(Show tasks to do)</a>
+        <% }else {%>
+          <a class="btn btn-lg btn-primary"
+              href="?show=completed">(Show completed tasks)</a>
+        <%}%>
       </p>
       <ul class="list-group">
         <% items.forEach(item => { %>
