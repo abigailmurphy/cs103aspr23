@@ -1,7 +1,6 @@
 <h1> Transactions for <%= user.username %> </h1>
 
 <div class="containter">
-  <div class="row">
     <div class="col">description</div>
       <% items.forEach(item => { %>
         <div class="row">
@@ -24,7 +23,7 @@
     <div class="col">edit</div>
   </div>
     
-</div>   
+ 
 
         <form method="post" action="transactions">
             <input type="text" placeholder = "description" name="description">
