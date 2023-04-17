@@ -30,7 +30,7 @@ router.get('/transactions/',
         await TransactionItem.find({userId:req.user._id})
                      
   
-            res.render('transactionList',{items,show,completed});
+            res.render('transactionList',{items,show});
 });
 
 
@@ -54,7 +54,7 @@ router.get('/transactions/remove/:itemId',
   isLoggedIn,
   async (req, res, next) => {
       console.log("inside /transactions/remove/:itemId")
-      await ToDoItem.deleteOne({_id:req.params.itemId});
+      await TransactionItem.deleteOne({_id:req.params.itemId});
       res.redirect('/transactions')
 });
 
@@ -64,7 +64,7 @@ router.get('/transactions/edit/:itemId',
   async (req, res, next) => {
       console.log("inside /transactions/edit/:itemId")
       const item = 
-       await ToDoItem.findById(req.params.itemId);
+       await TransactionItem.findById(req.params.itemId);
       //res.render('edit', { item });
       res.locals.item = item
       res.render('edit')
@@ -76,17 +76,17 @@ router.post('/transactions/updateTransactionItem',
   async (req, res, next) => {
       const {itemId,item,priority} = req.body;
       console.log("inside /transactions/:itemId");
-      await ToDoItem.findOneAndUpdate(
+      await TransactionItem.findOneAndUpdate(
         {_id:itemId},
-        {$set: {item,priority}} );
-      res.redirect('/toDo')
+        {$set: {item,amount,category,date}} );
+      res.redirect('/transactions')
 });
 
 router.get('/transactions/byUser',
   isLoggedIn,
   async (req, res, next) => {
       let results =
-            await ToDoItem.aggregate(
+            await TransactionItem.aggregate(
                 [ 
                   {$group:{
                     _id:'$userId',
