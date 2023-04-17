@@ -4,7 +4,7 @@ const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-var toDoItemSchema = Schema( {
+var transactionItemSchema = Schema( {
   description: String,
   amount: Number,
   createdAt: Date,
