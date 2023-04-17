@@ -7,6 +7,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 var transactionItemSchema = Schema( {
   description: String,
   amount: Number,
+  date: Date,
   createdAt: Date,
   category: String,
   userId: {type:ObjectId, ref:'user' }
