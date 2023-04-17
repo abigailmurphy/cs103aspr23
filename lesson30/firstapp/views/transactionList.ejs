@@ -1,16 +1,20 @@
 <h1> Transactions for <%= user.username %> </h1>
 
 <div class="containter">
-    <div class="col">description</div>
+    <div class="col">
+        description
       <% items.forEach(item => { %>
         <div class="row">
           <%= item.description %>
         </div>
     <% }) %>
-    <div class="col">amount</div>
+    </div>
+    <div class="col">
+        amount
       <% items.forEach(item => { %>
           <%= item.amount %>
     <% }) %>
+    </div>
     <div class ="col">category</div>
       <% items.forEach(item => { %>
         <%= item.category %>
