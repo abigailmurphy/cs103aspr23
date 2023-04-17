@@ -48,15 +48,13 @@
         <% }) %>
 
         <form method="post" action="transaction">
-            new item: <input type="text" name="item">
+            description: <input type="text" name="description">
             <br>
-            priority: <select name="priority">
-              <option>1 </option>
-              <option>2 </option>
-              <option>3 </option>
-              <option>4 </option>
-              <option>5 </option>
-            </select>
+            category: <input type="text" name="category">
+            <br>
+            amount: <input type="text" name="amount">
+            <br>
+            mm/dd/yyyy: <input type="date" name="date">
             <br>
             <input type="submit" value="store">
         </form>
