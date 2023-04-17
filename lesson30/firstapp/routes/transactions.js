@@ -3,7 +3,7 @@
 */
 const express = require('express');
 const router = express.Router();
-const ToDoItem = require('../models/ToDoItem')
+const TransactionItem = require('../models/TransactionItem')
 const User = require('../models/User')
 
 
@@ -25,18 +25,10 @@ router.get('/transactions/',
   isLoggedIn,
   async (req, res, next) => {
       const show = req.query.show
-      const completed = show=='completed'
       let items=[]
-      if (show) { // show is completed or todo, so just show some items
-        items = 
-          await ToDoItem.find({userId:req.user._id, completed})
+      await ToDoItem.find({userId:req.user._id, completed})
                         .sort({completed:1,priority:1,createdAt:1})
-      }else {  // show is null, so show all of the items
-        items = 
-          await ToDoItem.find({userId:req.user._id})
-                        .sort({completed:1,priority:1,createdAt:1})
-
-      }
+  
             res.render('transactionList',{items,show,completed});
 });
 
@@ -46,11 +38,11 @@ router.get('/transactions/',
 router.post('/transactions',
   isLoggedIn,
   async (req, res, next) => {
-      const todo = new ToDoItem(
-        {item:req.body.item,
+      const todo = new TransactionItem(
+        {description: req.body.description,
+         amount: parseFloat(req.body.amount),
+         category: req.body.category,
          createdAt: new Date(),
-         completed: false,
-         priority: parseInt(req.body.priority),
          userId: req.user._id
         })
       await todo.save();
@@ -62,28 +54,9 @@ router.get('/transactions/remove/:itemId',
   async (req, res, next) => {
       console.log("inside /transactions/remove/:itemId")
       await ToDoItem.deleteOne({_id:req.params.itemId});
-      res.redirect('/toDo')
+      res.redirect('/transactions')
 });
 
-router.get('/transactions/complete/:itemId',
-  isLoggedIn,
-  async (req, res, next) => {
-      console.log("inside /transactions/complete/:itemId")
-      await ToDoItem.findOneAndUpdate(
-        {_id:req.params.itemId},
-        {$set: {completed:true}} );
-      res.redirect('/toDo')
-});
-
-router.get('/transactions/uncomplete/:itemId',
-  isLoggedIn,
-  async (req, res, next) => {
-      console.log("inside /transactions/complete/:itemId")
-      await ToDoItem.findOneAndUpdate(
-        {_id:req.params.itemId},
-        {$set: {completed:false}} );
-      res.redirect('/toDo')
-});
 
 router.get('/transactions/edit/:itemId',
   isLoggedIn,
@@ -97,11 +70,11 @@ router.get('/transactions/edit/:itemId',
       //res.json(item)
 });
 
-router.post('/transactions/updateTodoItem',
+router.post('/transactions/updateTransactionItem',
   isLoggedIn,
   async (req, res, next) => {
       const {itemId,item,priority} = req.body;
-      console.log("inside /transactions/complete/:itemId");
+      console.log("inside /transactions/:itemId");
       await ToDoItem.findOneAndUpdate(
         {_id:itemId},
         {$set: {item,priority}} );
