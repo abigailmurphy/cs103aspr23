@@ -33,7 +33,7 @@ router.get('/todo/',
       }else {  // show is null, so show all of the items
         items = 
           await TransactionItem.find({userId:req.user._id})
-                        .sort(createdAt:1})
+                        .sort({createdAt:1})
 
       }
             res.render('transactionList',{items,show});
