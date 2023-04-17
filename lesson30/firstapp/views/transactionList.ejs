@@ -10,7 +10,10 @@
     <div class="col">edit</div>
   </div>
   <div> class="row">
-    <%= item.description %>
+    <% items.forEach(item => { %>
+      <li class="list-group-item">
+        <%= item.description %>
+    }) %>
   </div>
 </div>   
 
