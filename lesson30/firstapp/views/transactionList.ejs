@@ -3,22 +3,29 @@
 <div class="containter">
   <div class="row">
     <div class="col">description</div>
+      <% items.forEach(item => { %>
+        <li class="list-group-item">
+          <%= item.description %>
+    <% }) %>
     <div class="col">amount</div>
+      <% items.forEach(item => { %>
+        <li class="list-group-item">
+          <%= item.description %>
+    <% }) %>
     <div class ="col">category</div>
+      <% items.forEach(item => { %>
+        <li class="list-group-item">
+          <%= item.description %>
+    <% }) %>
     <div class ="col">date</div>
+      <% items.forEach(item => { %>
+        <li class="list-group-item">
+        <%= item.description %>
+    <% }) %>
     <div class="col">delete</div>
     <div class="col">edit</div>
   </div>
-    <% items.forEach(item => { %>
-      <li class="list-group-item">
-        <%= item.description %>
-      <li class="list-group-item">
-        <%= item.amount %>
-      <li class="list-group-item">
-        <%= item.category %>
-      <li class="list-group-item">
-        <%= item.date %>
-   <% }) %>
+    
 </div>   
 
         <form method="post" action="transactions">
