@@ -24,13 +24,13 @@ isLoggedIn = (req,res,next) => {
 router.get('/transactions/',
   isLoggedIn,
   async (req, res, next) => {
-      const show = req.query.show
+  
       let items=[]
       items = 
         await TransactionItem.find({userId:req.user._id})
                      
   
-            res.render('transactionList',{items,show});
+            res.render('transactionList',{items});
 });
 
 
