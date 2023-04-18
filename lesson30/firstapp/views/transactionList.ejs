@@ -1,30 +1,28 @@
 <h1> Transactions for <%= user.username %> </h1>
 
 <div class="containter">
-    <div class="col">
-        description
+    <div class="row">
+        <div class="col">description</div>
+        <div class="col">amount</div>
+        <div class="col">category</div>
+        <div class="col">date</div>
+     </div>
       <% items.forEach(item => { %>
         <div class="row">
-          <%= item.description %>
+            <div class="col">
+                <%= item.description %>
+            </div>
+            <div class="col">
+                <%= item.description %>
+            </div>
+            <div class="col">
+                <%= item.description %>
+            </div>
+            <div class="col">
+                <%= item.description %>
+            </div>
         </div>
     <% }) %>
-    </div>
-    <div class="col">
-        amount
-      <% items.forEach(item => { %>
-          <%= item.amount %>
-    <% }) %>
-    </div>
-    <div class ="col">category</div>
-      <% items.forEach(item => { %>
-        <%= item.category %>
-    <% }) %>
-    <div class ="col">date</div>
-      <% items.forEach(item => { %>
-        <%= item.date %>
-    <% }) %>
-    <div class="col">delete</div>
-    <div class="col">edit</div>
   </div>
     
  
