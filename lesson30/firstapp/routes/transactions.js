@@ -32,17 +32,17 @@ router.get('/transactions/',
 
     if(sortBy) {
       if (categorySort) {
-        items = await TransactionItem.find({userId:req.user._id, category})
+        items = await TransactionItem.find({userId:req.user._id})
             .sort({category:1,createdAt:1})
       } 
       else if (amountSort) {
-        items = await TransactionItem.find({userId:req.user._id,amount})
+        items = await TransactionItem.find({userId:req.user._id})
             .sort({amount:-1,createdAt:1})
       } else if (descriptionSort) {
-        items = await TransactionItem.find({userId:req.user._id,description})
+        items = await TransactionItem.find({userId:req.user._id})
             .sort({description:1,createdAt:1})
       } else if (dateSort) {
-        items = await TransactionItem.find({userId:req.user._id,date})
+        items = await TransactionItem.find({userId:req.user._id})
             .sort({createdAt:-1})
       }
     }
