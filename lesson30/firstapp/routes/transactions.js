@@ -39,7 +39,7 @@ router.post('/transactions',
         {description: req.body.description,
          amount: parseFloat(req.body.amount),
          category: req.body.category,
-         date: req.body.date,
+         date: (req.body.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"},
          createdAt: new Date(),
          userId: req.user._id
         })
