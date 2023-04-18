@@ -87,9 +87,9 @@ router.get('/transactions/groupBy',
                 [ 
                   {$group:{
                     _id:'$category',
-                    total:{$count:{}}
+                    total:{$sum:$amount}
                     }},
-                  {$sort:{total:1}},              
+                  {$sort:{total:-1}},              
                 ])
               
         results = 
@@ -99,24 +99,6 @@ router.get('/transactions/groupBy',
 
         //res.json(results)
         res.render('groupByCategory',{results})
-});
-
-router.get('/transactions/sortCategory',
-  isLoggedIn,
-  async (req, res, next) => {
-      let results =
-            await TransactionItem.aggregate(
-                [ 
-                  {$sort:{'category':1}},              
-                ])
-              
-        results = 
-           await User.populate(results,
-                   {path:'_id',
-                   select:['description','amount', {results}, 'date', 'delete','edit']})
-
-        //res.json(results)
-        res.render('sortByCategory',{results})
 });
 
 
