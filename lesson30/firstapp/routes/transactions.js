@@ -36,7 +36,8 @@ router.post('/transactions',
   isLoggedIn,
   async (req, res, next) => {
       var dateString = (req.body.date).toString()
-      let dateChunks=[] == dateString.split()
+      let dateChunks=[]
+      dateChunks = dateString.split()
       let date = dateChunks[0] + " " + dateChunks[1] + " " + dateChunks[2] + " " + dateChunks[3]
       const transaction = new TransactionItem(
         {description: req.body.description,
