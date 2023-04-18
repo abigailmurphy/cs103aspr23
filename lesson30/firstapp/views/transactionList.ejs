@@ -6,6 +6,8 @@
         <div class="col">amount</div>
         <div class="col">category</div>
         <div class="col">date</div>
+        <div class="col">delete</div>
+        <div class="col">edit</div>
      </div>
       <% items.forEach(item => { %>
         <div class="row">
@@ -13,13 +15,19 @@
                 <%= item.description %>
             </div>
             <div class="col">
-                <%= item.description %>
+                <%= item.amount %>
             </div>
             <div class="col">
-                <%= item.description %>
+                <%= item.category %>
             </div>
             <div class="col">
-                <%= item.description %>
+                <%= item.date %>
+            </div>
+            <div class="col">
+                <i class="bi bi-trash"></i>
+            </div>
+            <div class="col">
+                <i class="bi bi-pencil-square"></i>
             </div>
         </div>
     <% }) %>
