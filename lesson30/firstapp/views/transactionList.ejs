@@ -51,8 +51,7 @@
         </tr>
     </thead>
     <tbody>
-       <% items.forEach(item =>{ %>
-        <% results.map(item => {%>
+       <% results.map(item => {%>
             <tr>
                <td> <%= item.description %> </td>
                <td><%= item.amount %></td>
@@ -68,8 +67,7 @@
                     <i class="bi bi-pencil-square"></i>
                </td>
             </tr>
-            
-            <% }) %>
+           
             <% })%>
 
     </tbody>
