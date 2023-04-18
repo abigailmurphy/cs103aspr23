@@ -1,7 +1,7 @@
 <pre>
     <%= JSON.stringify(item,null,5) %>
 </pre>
-<form method="post" action="/todo/updateTransactionItem">
+<form method="post" action="/transactions/updateTransactionItem">
     <input type="hidden" name="itemId" value="<%= item._id %>">
     new description: 
     <input type="text" 
