@@ -52,7 +52,7 @@ router.get('/transactions/remove/:itemId',
   async (req, res, next) => {
       console.log("inside /transactions/remove/:itemId")
       await TransactionItem.deleteOne({_id:req.params.itemId});
-      res.redirect('/transactions')
+      res.redirect('/transactions2')
 });
 
 
