@@ -57,7 +57,7 @@
                 <%= item.category %>
             </div>
             <div class="col">
-                <%= item.date.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %>
+                <%= item.date.toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric"}) %>
             </div>
             <div class="col">
                 <a href="/transactions/remove/<%=item._id %>">
