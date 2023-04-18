@@ -64,14 +64,14 @@ router.get('/transactions/edit/:itemId',
        await TransactionItem.findById(req.params.itemId);
       //res.render('edit', { item });
       res.locals.item = item
-      res.render('edit')
+      res.render('editTr')
       //res.json(item)
 });
 
 router.post('/transactions/updateTransactionItem',
   isLoggedIn,
   async (req, res, next) => {
-      const {itemId,item,priority} = req.body;
+      const {itemId,description,amount,category,date} = req.body;
       console.log("inside /transactions/:itemId");
       await TransactionItem.findOneAndUpdate(
         {_id:itemId},
