@@ -64,7 +64,7 @@ router.get('/transactions/edit/:itemId',
        await TransactionItem.findById(req.params.itemId);
       //res.render('edit', { item });
       res.locals.item = item
-      res.render('editTr')
+      res.render('editTr',{item})
       //res.json(item)
 });
 
