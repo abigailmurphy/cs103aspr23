@@ -79,28 +79,45 @@ router.post('/transactions/updateTransactionItem',
       res.redirect('/transactions')
 });
 
-router.get('/transactions/byUser',
+router.get('/transactions/groupBy',
   isLoggedIn,
   async (req, res, next) => {
       let results =
             await TransactionItem.aggregate(
                 [ 
                   {$group:{
-                    _id:'$userId',
+                    _id:'$category',
                     total:{$count:{}}
                     }},
-                  {$sort:{total:-1}},              
+                  {$sort:{total:1}},              
                 ])
               
         results = 
            await User.populate(results,
                    {path:'_id',
-                   select:['username','age']})
+                   select:['category','amount']})
 
         //res.json(results)
-        res.render('summarizeByUser',{results})
+        res.render('groupByCategory',{results})
 });
 
+router.get('/transactions/sortCategory',
+  isLoggedIn,
+  async (req, res, next) => {
+      let results =
+            await TransactionItem.aggregate(
+                [ 
+                  {$sort:{'category':1}},              
+                ])
+              
+        results = 
+           await User.populate(results,
+                   {path:'_id',
+                   select:['description','amount', {results}, 'date', 'delete','edit']})
+
+        //res.json(results)
+        res.render('sortByCategory',{results})
+});
 
 
 module.exports = router;
