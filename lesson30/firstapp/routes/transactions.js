@@ -23,12 +23,35 @@ isLoggedIn = (req,res,next) => {
 router.get('/transactions/',
   isLoggedIn,
   async (req, res, next) => {
+    const sortBy = req.query.sortBy
+    const categorySort = sortBy== 'category'
+    const amountSort = sortBy=='amount'
+    const descriptionSort = sortBy=='description'
+    const dateSort = sortBy=='date'
     let items=[]
-    items = await TransactionItem.find({userId:req.user._id})
-   
+
+    if(sortBy) {
+      if (categorySort) {
+        items = await TransactionItem.find({userId:req.user._id, category})
+            .sort({category:1,createdAt:1})
+      } 
+      else if (amountSort) {
+        items = await TransactionItem.find({userId:req.user._id,amount})
+            .sort({amount:-1,createdAt:1})
+      } else if (descriptionSort) {
+        items = await TransactionItem.find({userId:req.user._id,description})
+            .sort({description:1,createdAt:1})
+      } else if (dateSort) {
+        items = await TransactionItem.find({userId:req.user._id,date})
+            .sort({createdAt:-1})
+      }
+    }
+      else {
+        items = await TransactionItem.find({userId:req.user._id})
+            .sort({createdAt:-1})
+    }   
      res.render('transactionList',{items})
 });
-
 
 
 /* add the value in the body to the list associated to the key */
