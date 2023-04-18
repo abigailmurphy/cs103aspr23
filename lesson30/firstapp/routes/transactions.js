@@ -75,7 +75,7 @@ router.post('/transactions/updateTransactionItem',
       console.log("inside /transactions/:itemId");
       await TransactionItem.findOneAndUpdate(
         {_id:itemId},
-        {$set: {item,amount,category,date}} );
+        {$set: {description,amount,category,date}} );
       res.redirect('/transactions')
 });
 
