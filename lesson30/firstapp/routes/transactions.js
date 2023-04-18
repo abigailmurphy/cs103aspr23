@@ -87,14 +87,14 @@ router.get('/transactions/groupBy',
                 [ 
                   {$group:{
                     _id:'$category',
-                    total:{$sum:$amount}
+                    total:{$sum:'$amount'}
                     }},
                   {$sort:{total:-1}},              
                 ])
               
         results = 
            await User.populate(results,
-                   {path:'_id',
+                   {path:'category',
                    select:['category','amount']})
 
         //res.json(results)
