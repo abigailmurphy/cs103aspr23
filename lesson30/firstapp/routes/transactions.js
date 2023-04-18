@@ -35,15 +35,11 @@ router.get('/transactions/',
 router.post('/transactions',
   isLoggedIn,
   async (req, res, next) => {
-      var dateString = (req.body.date).toString()
-      let dateChunks=[]
-      dateChunks = dateString.split()
-      let date = dateChunks[0] + " " + dateChunks[1] + " " + dateChunks[2] + " " + dateChunks[3]
       const transaction = new TransactionItem(
         {description: req.body.description,
          amount: parseFloat(req.body.amount),
          category: req.body.category,
-         date: date,
+         date: req.body.date,
          createdAt: new Date(),
          userId: req.user._id
         })
