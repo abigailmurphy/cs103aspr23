@@ -43,7 +43,7 @@ router.get('/transactions/',
             .sort({description:1,createdAt:1})
       } else if (dateSort) {
         items = await TransactionItem.find({userId:req.user._id})
-            .sort({createdAt:-1})
+            .sort({date:1,createdAt:1})
       }
     }
       else {
